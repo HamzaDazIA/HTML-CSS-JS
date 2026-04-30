@@ -1,0 +1,17 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+  }
+  h1 {
+    color: white;
+    background-color: #61b3e7;
+  }
+  h1:hover {
+    color: #0479c2;
+    background-color: hsl(234, 91%, 38%);
+    transition : all 1000ms ease-in-out;
+  }
+  h2 {
+    color: #FFB695;
+    margin-left: 40px;
+    border-bottom: 4px dotted black;
+  }
