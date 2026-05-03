@@ -1,0 +1,12 @@
+div{
+    background-image: url("https://cdn.pixabay.com/photo/2015/04/19/08/32/flower-729510_1280.jpg");
+    color: rgb(0, 0, 0);
+    background-repeat: no-repeat; /* told the browser how many time is repeat your background or if you went not do that is told him no repeat*/
+    background-attachment: scroll; /*in css the choices in attachment is if have the default value is scroll : this choice is fix you image background not down with you 
+    if we have fixed : we told the browser i need this images scroll with me  */
+    background-position: bottom left ;/*  the background position is help us were we set the position of background*/
+    /* background-position-x: 30px;
+    background-position-y: 90px; but by using -x and -y we choice the postion by absolite lengths by px or cm ...*/
+
+    background-size: cover ; /*background-size is help  us to conter size of background we have many paramter like cover or auto (the auto is default value) and we can use absolite valus to control him */
+}
