@@ -1,0 +1,21 @@
+.hamza{
+    background-color: chartreuse;
+    padding: 25% 10% 5%;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+
+    /* the border (n9adro mkolo lihom l7yota dyal sando9 ) we can use him for show the edge of awer box */
+    border-width: 55px; /* we set the size of edges is like padding or margin in takes parameters */ 
+    border-style: solid; /* here we choice type style of this porder wash mkhatit solide ...*/
+    border-color: rgb(141, 18, 202);
+    border: 9px solid ; /*here we can se the border is sellect three three thins not more Syntax: <line-width> || <line-style> || <color> */
+}
+
+.dazia{
+    margin-top: 50px;
+    margin-left: 90px;
+    width: 300px;
+    border: 6px inset rgb(198, 186, 210);
+    padding
+}
