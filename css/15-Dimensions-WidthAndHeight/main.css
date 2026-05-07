@@ -1,0 +1,7 @@
+ div{
+    background-color: bisque;
+    /*width: 100px ;*/ /* the with is use to just the with of box model the default value is auto*/
+    min-width: 10px; /* is teld browser min of with is need any block*/
+    max-width: auto; /* is teld the browser what is the max with*/
+    /*in the heigth is the same */ 
+}

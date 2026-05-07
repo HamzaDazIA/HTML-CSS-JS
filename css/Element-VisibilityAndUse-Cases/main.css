@@ -1,0 +1,10 @@
+.first
+{
+    background-color: blue;
+    visibility: visible; /* the visibility using we went him the block element is save block place */
+}
+
+div{
+    background-color: brown;
+
+}

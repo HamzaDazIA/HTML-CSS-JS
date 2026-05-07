@@ -1,0 +1,8 @@
+div
+{
+    background-color: rgb(215, 230, 200);
+    color: rgb(189, 0, 241);
+    width: 50%;
+    margin: auto;
+    text-shadow: 1px 0.5px 2px red; /* the text shadow is take four paramter Horizontal-shadow - vertical-shodow - bluer - color*/
+}

@@ -1,0 +1,8 @@
+div
+{
+    background-color: rgb(245, 228, 220) ;
+    padding :10px;
+    width: 200px;
+    height: 100px;
+    overflow-x: auto;
+}
