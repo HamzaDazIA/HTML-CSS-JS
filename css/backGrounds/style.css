@@ -9,4 +9,6 @@ div{
     background-position-y: 90px; but by using -x and -y we choice the postion by absolite lengths by px or cm ...*/
 
     background-size: cover ; /*background-size is help  us to conter size of background we have many paramter like cover or auto (the auto is default value) and we can use absolite valus to control him */
+    /* background : When browsers process the background shorthand, they automatically reset all specific background-* longhand properties to their default values as defined by the CSS specification. 
+    Since you didn't explicitly set those individual longhand properties, the browser’s developer tools display them as initial*/
 }

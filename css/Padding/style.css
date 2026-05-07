@@ -1,0 +1,13 @@
+.dazia {
+    background-color: red; 
+    /* pading is take four param top rigth bottom left  and is not take nigative value */
+    padding: 10px 100px 5px  2px; 
+    
+    padding: 10px ;/* if we just set one paramter the all directions is take this same value*/
+    padding: 10px 200px; /* if we set the just top and rigth is take the same value of direct direction  for example the left
+    take value of rigth and top take value of bottom  And the opposite*/
+}
+
+.hamza {
+    background-color: blueviolet;
+}
