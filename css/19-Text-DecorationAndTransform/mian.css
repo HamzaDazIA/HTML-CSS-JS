@@ -1,0 +1,15 @@
+
+div a{
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgb(222, 98, 98);
+    color: #ffffff;
+    border-style: inset;
+    padding: 6px;
+    border-radius: 31px;
+    text-transform: uppercase;
+    text-shadow: 1px 3px 10px blue;
+    min-width: 100px;
+    max-height: 100px;
+    box-shadow:  1px 3px 10px rgb(208, 185, 126);
+}

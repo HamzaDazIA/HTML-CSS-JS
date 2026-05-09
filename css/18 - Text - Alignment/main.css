@@ -1,5 +1,10 @@
 div
 {
     background-color: aquamarine;
-    text-align: ;
+    text-align: center; /*here we choice the place of text in box model center left rigth  */
+    direction: ltr; /* hna kan khtaro direction dyal 9raya wash men rigth to left ola left to rigth  */
+}
+
+img{
+    vertical-align: middle;
 }

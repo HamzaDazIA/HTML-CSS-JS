@@ -1,0 +1,13 @@
+
+div {
+    background-color: bisque;
+    letter-spacing: 6px; /* is do space betoun letters in text is take nigativ and positeve*/ 
+    text-indent: 50px; /* is give you indent for your text */
+    line-height: 50px; /* is use for modife height betwen lines*/
+    word-spacing: 100px; /* is use to give spaces betoune words */
+    white-space: nowrap; /* in normale case if we have long text if is long than width of 
+        box is do newline but nowrap is remove this option and text is by  overflow  */
+    word-break: break-word ;
+    overflow: scroll;
+}
+
