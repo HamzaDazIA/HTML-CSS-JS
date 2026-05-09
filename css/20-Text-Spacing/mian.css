@@ -9,5 +9,10 @@ div {
         box is do newline but nowrap is remove this option and text is by  overflow  */
     word-break: break-word ;
     overflow: scroll;
+        overflow-wrap: break-word; /* iThe browser acts politely. 
+        It will first try to move a long word to the next line to keep it whole. 
+        It will only break the word in the middle if the word is so massive that it can't even fit on its own dedicated line */
+    word-break: break-all; /*The browser acts ruthlessly. It will chop words at the exact edge of the container, 
+        regardless of whether the word could have fit neatly if it had just been moved to the next line.*/
 }
 
