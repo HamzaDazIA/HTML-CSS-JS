@@ -4,6 +4,7 @@ div
     width: 250px;
     display: inline-block;
     overflow-x: scroll;
+    
     /*overflow-wrap: break-word; /* iThe browser acts politely. 
         It will first try to move a long word to the next line to keep it whole. 
         It will only break the word in the middle if the word is so massive that it can't even fit on its own dedicated line */
