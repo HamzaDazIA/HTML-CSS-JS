@@ -1,10 +1,23 @@
+/*
+    font stye
+    font variant
+    font Weight
+
+*/
+
+*{
+    background-color: black;
+    color: aliceblue;
+}
+
 div
 {
-    background-color: aquamarine;
-    padding: 50px;
-    word-spacing: 2px;
-    text-align: center;
-    margin-top: 10px;
-    font-size: large;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: "Playwrite AR Guides", cursive; */
+    font-weight: 400;
+    font-style: normal; /* is just the style of the font like we have tree type :
+    normal: is sambel form of font 
+    italic : is ather type in sytling 
+    oblique : is ather type in sytling  */
+    /* font-variant: small-caps;  */
+    font-weight:200; /* is weigth of font like blod  light regular ...*/
 }
