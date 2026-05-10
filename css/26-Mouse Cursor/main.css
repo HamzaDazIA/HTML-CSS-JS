@@ -1,0 +1,14 @@
+*{
+    display: block;
+    margin-bottom: 20px;
+    
+}
+
+button
+{
+    background: transparent;
+    border-color: black;
+    color:aquamarine;
+    cursor: pointer; /* the cursor is type we have pointer: this element is clickbel   and multi types ...*/ 
+    
+}
