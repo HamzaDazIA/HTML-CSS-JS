@@ -8,4 +8,6 @@
     padding-bottom: 10px;
     text-align: center;
     background-color: #eee;
+    display: inline-block;
+    margin-left: 50px;
 }
