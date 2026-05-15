@@ -1,0 +1,30 @@
+h1 
+{
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/023/172/646/small/chalk-rubbed-out-on-blackboard-texture-background-grunge-background-free-photo.jpg");
+    color: antiquewhite;
+    border-radius: 20px;
+    text-decoration:  underline wavy red 3px; ; 
+    max-width: max-content;
+    overflow: hidden;
+    text-overflow: clip;
+
+}
+
+
+
+body {
+    background: linear-gradient(29deg, #DCFF97 0%, #4400FF 70%, #FD0707 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}   
+p{
+    border-radius: 10px;
+    border-color: blue;
+    border-style: inset ;
+    border-width: 5px;
+    border-right-color: aquamarine;
+    padding: 50px;
+    background: linear-gradient(60deg , #DCFF97 0%, #4400FF 30%, #FD0707 100% );
+
+}

@@ -1,0 +1,24 @@
+.S {
+    background-color: blue;
+    position: absolute;
+    top: -4px;
+
+}
+
+.hamza{
+    width: 500px;
+    height: 300px ;   
+    position: relative;
+}
+div{
+    background-color: rgb(102, 68, 27);
+    width: max-content;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 2px;
+    float: left;
+}
+
+p{
+
+}

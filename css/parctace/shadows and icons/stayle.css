@@ -1,0 +1,29 @@
+
+.icons{
+    color: rgb(158, 28, 16);
+    width: 90px;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    display: inline
+    ;
+ 
+}
+
+.fa-youtube, .fa-facebook, .fa-twitter
+{
+    color: rgb(158, 28, 16);
+    width: 90px;
+    height: 90px;
+    margin: 30px;
+    padding: 10px;
+    border-style: ridge;
+    box-shadow: -8px -2px 19px rgb(231, 215, 215);
+
+
+}
+
+
+.icons{
+    display: inline;
+}
