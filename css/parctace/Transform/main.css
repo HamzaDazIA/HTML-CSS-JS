@@ -1,0 +1,18 @@
+div{
+    border-color: black;
+    border-style: groove;
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+    background-color: tomato;
+    border-radius: 10px;
+    
+
+    transform:  translateX(50px); /* kan ghadmo beha bas nchongew point dyal block dyalna fel ma3lim x*/ 
+    transform:  translateY(90px); /* kan ghadmo beha bas nchongew point dyal block dyalna fel ma3lim y "we can just use one Y or X because is overread achder"*/
+    transform: translate(80px , 100px); /*(X, Y)*/
+
+    transform: rotateX(360deg);
+        transform: rotateY(360deg);
+    transform: rotateZ(360deg);
+}
