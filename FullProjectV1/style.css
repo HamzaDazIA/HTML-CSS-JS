@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Main-Container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Left-side-8-Column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.login-Form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.Intro h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.Intro h2 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.Form p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.Form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.Form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.Form a {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.Form a:hover {
+    text-decoration: underline;
+}
+
+.Form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Form button:hover {
+    background-color: #333;
+}
+
+.Social-Sign-in {
+    margin-top: 30px;
+}
+
+.separator-Or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.separator-Or .line {
+    flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.separator-Or .text-separator {
+    margin: 0 10px;
+    color: #999;
+    font-size: 14px;
+}
+
+.Art {
+    flex: 1;
+    display: none;
+}
+
+.Art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .Art {
+        display: block;
+    }
+}
