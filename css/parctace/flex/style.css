@@ -20,7 +20,7 @@
 .item6
 {
     order : -1; /*Items with the same order revert to source order.*/
-	flex-grow: ; 
+	flex-grow: 3; /* to allow the item to grow and take up any remainting space in the container. */  
 }
 .container
 {
