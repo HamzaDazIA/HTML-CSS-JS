@@ -1,0 +1,40 @@
+*{
+
+    box-sizing: border-box;
+}
+
+.item 
+{
+    background-color: rgb(30, 215, 23);
+    height: 40px;
+    margin: 10px;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    order: 2;
+    /* float: left; */
+}
+
+.item6
+{
+    order : -1; /*Items with the same order revert to source order.*/
+	flex-grow: 3; /* to allow the item to grow and take up any remainting space in the container. */  
+}
+.container
+{
+    background-color: rgb(243, 49, 0);
+    width:  100%;
+    height: 600px;
+    display: flex; /* to make the container a flex container and its children become flex items. */
+    flex-direction: row; /* to set the direction of the flex items to be in a column and reverse the order of the items. */
+    flex-wrap: wrap; /* to allow the flex items to wrap onto multiple lines if they exceed the width of the container. */;
+    flex-wrap: nowrap; /* to allow the flex items to wrap onto multiple lines if they exceed the width of the container and reverse the order of the wrapped lines. */
+    flex-flow: row wrap; /*[flex-direction] flex-wrap to set the direction of the flex items to be in a column and allow them to wrap onto multiple lines if they exceed the width of the container. */
+    justify-content: center; /* to align the flex items horizontally in the center of the container. */
+    justify-content: flex-start; /* to distribute the flex items evenly with space between them. */
+    /* align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe; */
+    align-items: start; 
+    align-content: space-between;
+}
