@@ -44,13 +44,13 @@
   <script type="text/babel" src="gram-shared.jsx"></script>
   <script type="text/babel" src="gram-sidebar.jsx"></script>
   <script type="text/babel" src="gram-dashboard.jsx"></script>
-  <script type="text/babel" src="gram-kitchen.jsx"></script> 
+  <script type="text/babel" src="gram-kitchen.jsx"></script>
   <script type="text/babel" src="gram-pos.jsx"></script>
 
   <script type="text/babel">
     const { useState } = React;
     const C = window.C;
-    const { Card } = win dow;
+    const { Card } = window;
 
     // ── Placeholder screens for secondary modules ────────────────────────────
     const PLACEHOLDERS = {
@@ -197,8 +197,7 @@
     }
 
     // ── App shell ────────────────────────────────────────────────────────────
-    function App() 
-    {
+    function App() {
       const [view, setView] = useState('dashboard');
       return (
         <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
