@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRAM — Restaurant OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; overflow: hidden; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0b0d13;
+      color: #e8eaf4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #252a40; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #343a56; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    .gram-live-dot { animation: pulse 2.4s ease-in-out infinite; }
+
+    .gram-nav-btn:hover  { background: #1a1f30 !important; color: #c6c9da !important; }
+    .gram-menu-item:hover { background: #1d2236 !important; border-color: rgba(61,127,255,0.28) !important; }
+
+    input::placeholder { color: #49506a; }
+    input:focus { border-color: rgba(61,127,255,0.4) !important; box-shadow: 0 0 0 2px rgba(61,127,255,0.1); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="gram-shared.jsx"></script>
+  <script type="text/babel" src="gram-sidebar.jsx"></script>
+  <script type="text/babel" src="gram-dashboard.jsx"></script>
+  <script type="text/babel" src="gram-kitchen.jsx"></script> 
+  <script type="text/babel" src="gram-pos.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+    const C = window.C;
+    const { Card } = win dow;
+
+    // ── Placeholder screens for secondary modules ────────────────────────────
+    const PLACEHOLDERS = {
+      reservations: {
+        label: 'Reservations',
+        desc: 'Manage walk-ins, online bookings, waitlists, and guest preferences — all in one view.',
+        upcoming: [
+          { time: '6:00 PM', name: 'Williams', party: 2, table: 2,  status: 'confirmed' },
+          { time: '7:00 PM', name: 'Chen',     party: 4, table: 6,  status: 'confirmed' },
+          { time: '7:30 PM', name: 'Morales',  party: 2, table: 3,  status: 'confirmed' },
+          { time: '8:00 PM', name: 'Patel',    party: 6, table: 13, status: 'confirmed' },
+          { time: '8:30 PM', name: 'Jackson',  party: 3, table: 10, status: 'pending'   },
+          { time: '9:00 PM', name: 'Lee',      party: 4, table: 7,  status: 'confirmed' },
+        ],
+      },
+      inventory: {
+        label: 'Inventory',
+        desc: 'Track par levels, ingredient usage, supplier orders, and low-stock alerts.',
+        items: [
+          { name: 'Ribeye 12oz',      stock: 3,  par: 18, unit: 'portions', critical: true  },
+          { name: 'Salmon Fillet',    stock: 11, par: 14, unit: 'portions', critical: false },
+          { name: 'Duck Leg',         stock: 8,  par: 12, unit: 'portions', critical: false },
+          { name: 'Burrata 125g',     stock: 6,  par: 10, unit: 'units',    critical: false },
+          { name: 'Black Truffle',    stock: 1,  par: 4,  unit: 'portions', critical: true  },
+          { name: 'Côtes du Rhône',   stock: 24, par: 24, unit: 'bottles',  critical: false },
+          { name: 'Chardonnay',       stock: 18, par: 20, unit: 'bottles',  critical: false },
+          { name: 'Espresso Beans',   stock: 2,  par: 5,  unit: 'kg',       critical: true  },
+        ],
+      },
+      reports: {
+        label: 'Reports',
+        desc: 'Revenue breakdowns, server performance, menu analytics, and daily summaries.',
+        stats: [
+          { label: 'This Week',    value: '$68,240', trend: '▲ 11.4%' },
+          { label: 'This Month',   value: '$248,800', trend: '▲ 6.2%' },
+          { label: 'Avg Cover',    value: '$47.20',  trend: '▲ $3.10' },
+          { label: 'Labor Cost',   value: '28.4%',   trend: '▼ 1.2%' },
+        ],
+      },
+    };
+
+    function ReservationsView() {
+      const d = PLACEHOLDERS.reservations;
+      const { Badge } = window;
+      return (
+        <div style={{ flex: 1, overflow: 'auto', padding: '24px 28px', background: C.bg, display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <div>
+              <h1 style={{ fontSize: 22, fontWeight: 700, color: C.t1, letterSpacing: '-0.5px', margin: 0 }}>{d.label}</h1>
+              <p style={{ fontSize: 13, color: C.t3, margin: '3px 0 0' }}>Tonight · {d.upcoming.length} bookings</p>
+            </div>
+            <button style={{ padding: '9px 18px', background: C.accent, border: 'none', borderRadius: 8, color: '#fff', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'Plus Jakarta Sans' }}>+ New Reservation</button>
+          </div>
+          <Card style={{ overflow: 'hidden' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 60px 70px 100px', padding: '10px 20px', borderBottom: `1px solid ${C.border}` }}>
+              {['Time','Guest','Party','Table','Status'].map(h => (
+                <span key={h} style={{ fontSize: 10, fontWeight: 600, color: C.t3, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{h}</span>
+              ))}
+            </div>
+            {d.upcoming.map((r, i) => (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '90px 1fr 60px 70px 100px', padding: '13px 20px', borderTop: `1px solid ${C.border}`, alignItems: 'center' }}>
+                <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 13, fontWeight: 600, color: C.t1 }}>{r.time}</span>
+                <span style={{ fontSize: 13, fontWeight: 500, color: C.t1 }}>{r.name}</span>
+                <span style={{ fontSize: 13, color: C.t2 }}>{r.party}</span>
+                <span style={{ fontSize: 13, color: C.t2 }}>{r.table}</span>
+                <Badge color={r.status === 'confirmed' ? 'green' : 'amber'}>{r.status}</Badge>
+              </div>
+            ))}
+          </Card>
+        </div>
+      );
+    }
+
+    function InventoryView() {
+      const d = PLACEHOLDERS.inventory;
+      const { Badge } = window;
+      return (
+        <div style={{ flex: 1, overflow: 'auto', padding: '24px 28px', background: C.bg, display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <div>
+              <h1 style={{ fontSize: 22, fontWeight: 700, color: C.t1, letterSpacing: '-0.5px', margin: 0 }}>{d.label}</h1>
+              <p style={{ fontSize: 13, color: C.t3, margin: '3px 0 0' }}>3 items below par level</p>
+            </div>
+            <button style={{ padding: '9px 18px', background: C.accent, border: 'none', borderRadius: 8, color: '#fff', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'Plus Jakarta Sans' }}>+ Add Item</button>
+          </div>
+          <Card style={{ overflow: 'hidden' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 100px 100px 80px 120px', padding: '10px 20px', borderBottom: `1px solid ${C.border}` }}>
+              {['Item','Stock','Par','Unit','Status'].map(h => (
+                <span key={h} style={{ fontSize: 10, fontWeight: 600, color: C.t3, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{h}</span>
+              ))}
+            </div>
+            {d.items.map((item, i) => {
+              const pct = Math.min(100, Math.round((item.stock / item.par) * 100));
+              return (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 100px 100px 80px 120px', padding: '13px 20px', borderTop: `1px solid ${C.border}`, alignItems: 'center' }}>
+                  <span style={{ fontSize: 13, fontWeight: 500, color: C.t1 }}>{item.name}</span>
+                  <div>
+                    <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 13, fontWeight: 600, color: item.critical ? C.danger : C.t1 }}>{item.stock}</span>
+                    <div style={{ marginTop: 4, height: 3, width: 60, borderRadius: 2, background: C.s3, overflow: 'hidden' }}>
+                      <div style={{ width: `${pct}%`, height: '100%', background: item.critical ? C.danger : C.success, borderRadius: 2 }}></div>
+                    </div>
+                  </div>
+                  <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 13, color: C.t3 }}>{item.par}</span>
+                  <span style={{ fontSize: 12, color: C.t3 }}>{item.unit}</span>
+                  <Badge color={item.critical ? 'red' : pct < 70 ? 'amber' : 'green'}>{item.critical ? 'Critical' : pct < 70 ? 'Low' : 'OK'}</Badge>
+                </div>
+              );
+            })}
+          </Card>
+        </div>
+      );
+    }
+
+    function ReportsView() {
+      const d = PLACEHOLDERS.reports;
+      return (
+        <div style={{ flex: 1, overflow: 'auto', padding: '24px 28px', background: C.bg, display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div>
+            <h1 style={{ fontSize: 22, fontWeight: 700, color: C.t1, letterSpacing: '-0.5px', margin: 0 }}>{d.label}</h1>
+            <p style={{ fontSize: 13, color: C.t3, margin: '3px 0 0' }}>Performance overview · GRAM Downtown</p>
+          </div>
+          <div style={{ display: 'flex', gap: 14 }}>
+            {d.stats.map(s => (
+              <Card key={s.label} style={{ flex: 1, padding: '20px 22px' }}>
+                <div style={{ fontSize: 10, color: C.t3, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>{s.label}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: C.t1, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '-1.5px', lineHeight: 1, marginBottom: 6 }}>{s.value}</div>
+                <div style={{ fontSize: 12, color: s.trend.startsWith('▲') ? C.success : C.warning, fontWeight: 500 }}>{s.trend} vs last period</div>
+              </Card>
+            ))}
+          </div>
+          <Card style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: C.t1, marginBottom: 4 }}>Top Performers — Servers</div>
+            {[['Ana L.', '$3,840', '42 covers'], ['James K.', '$3,210', '38 covers'], ['Tom R.', '$2,890', '34 covers']].map(([name, rev, covers]) => (
+              <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderTop: `1px solid ${C.border}` }}>
+                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#fff', flexShrink: 0 }}>{name[0]}</div>
+                <span style={{ flex: 1, fontSize: 13, fontWeight: 500, color: C.t1 }}>{name}</span>
+                <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 13, color: C.accent }}>{rev}</span>
+                <span style={{ fontSize: 12, color: C.t3 }}>{covers}</span>
+              </div>
+            ))}
+          </Card>
+        </div>
+      );
+    }
+
+    // ── App shell ────────────────────────────────────────────────────────────
+    function App() 
+    {
+      const [view, setView] = useState('dashboard');
+      return (
+        <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+          <Sidebar active={view} onNav={setView} />
+          <main style={{ flex: 1, overflow: 'hidden', display: 'flex', minWidth: 0 }}>
+            {view === 'dashboard'    && <DashboardView />}
+            {view === 'floor'        && <FloorView />}
+            {view === 'kitchen'      && <KitchenView />}
+            {view === 'pos'          && <POSView />}
+            {view === 'reservations' && <ReservationsView />}
+            {view === 'inventory'    && <InventoryView />}
+            {view === 'reports'      && <ReportsView />}
+          </main>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
